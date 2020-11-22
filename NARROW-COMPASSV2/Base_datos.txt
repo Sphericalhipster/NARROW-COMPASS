@@ -1,0 +1,6 @@
+DROP DATABASE if EXISTS RegistroUsuarios ;
+Create database RegistroUsuarios;
+Use RegistroUsuarios;
+create table REGEST (id int not null AUTO_INCREMENT PRIMARY KEY, nombre_e varchar(60) not null, usuario_e varchar(50) not null, contrasenia_e varchar(50) not null);
+create table REGADM (id int not null AUTO_INCREMENT PRIMARY KEY, nombre_a varchar(60) not null, usuario_a varchar(50) not null, contrasenia_a varchar(50) not null);
+create table REGDOC (id int not null AUTO_INCREMENT PRIMARY KEY, nombre_d varchar(60) not null, usuario_d varchar(50) not null, contrasenia_d varchar(50) not null);

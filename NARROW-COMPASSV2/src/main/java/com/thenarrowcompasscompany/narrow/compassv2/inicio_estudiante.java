@@ -6,25 +6,39 @@
 package com.thenarrowcompasscompany.narrow.compassv2;
 //aplicar herencia desde otro archivpo
 // setOpaque fueza aplicar un badground si está en true
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author dinan
  */
-public class inicio_estudiante extends javax.swing.JFrame {
+public class inicio_estudiante extends GUINC implements IBD_CRUD{
     public String usuarioe = "Diego";
     public String contraseñae = "12345";
     
     /**
      * Creates new form inicio_estudiante
      */
+    @Override
+    public void Salir(java.awt.event.ActionEvent evt){
+        
+        JOptionPane.showMessageDialog(null,"Hasta luego"); 
+        System.exit(WIDTH);     
+    }
+    
     public inicio_estudiante() {
         //inicia los componentes graficos del formulario
         initComponents();
         //centrar el jFrame        
         this.setLocationRelativeTo(null);
+        //Bloquea el tamaño de la ventana//
+        this.setResizable(false);
         //arreglo de la lista - borrador no es el completo
         String [] facultad = new String[500];
         facultad[0] = "Biología";
@@ -44,7 +58,28 @@ public class inicio_estudiante extends javax.swing.JFrame {
         for (int i = 0; i < 4; i++){
             this.Asignatura_NC.addItem(Asignatura[i]);
         }
+       
     }
+    /*public BufferedImage cargarImagen(int xp, int yp){
+        BufferedImage imagenfondo = null;
+        URL url = getClass().getResource("com.thenarrowcompasscompany.narrow.compassv2.imagenes/logo_azul");
+        BufferedImage imagenlogo = null;
+        
+        
+        
+        try{
+            BufferedImage hoja = ImageIO.read(url);
+        }catch(IOException ex){
+            System.out.println("problemas al cargar imagen");
+        }
+        int ladoimagen = 30;
+        int x = xp * ladoimagen - ladoimagen;
+        int y = yp * ladoimagen - ladoimagen;
+        
+        imagenfondo = hoja.getSubimage();
+        return imagenfondo;
+        
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,6 +97,7 @@ public class inicio_estudiante extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Mostrar_imagen = new javax.swing.JLabel();
         Mostrar_asignatura = new javax.swing.JLabel();
+        Imagen1 = new javax.swing.JLabel();
         Asignatura_NC = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         Buscar_imagen = new javax.swing.JButton();
@@ -82,31 +118,16 @@ public class inicio_estudiante extends javax.swing.JFrame {
                 jPanel1KeyReleased(evt);
             }
         });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Mostrar_imagen.setText("Imagen por defecto");
+        jPanel1.add(Mostrar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 157, 89));
 
         Mostrar_asignatura.setText("Asignatura");
+        jPanel1.add(Mostrar_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 197, 20));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Mostrar_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Mostrar_asignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(Mostrar_imagen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Mostrar_asignatura)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
+        Imagen1.setText("jLabel1");
+        jPanel1.add(Imagen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 157, 89));
 
         Asignatura_NC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asignatura" }));
 
@@ -128,26 +149,27 @@ public class inicio_estudiante extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Facultades_NC, 0, 76, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Asignatura_NC, 0, 83, Short.MAX_VALUE)
-                            .addComponent(Buscar_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Facultades_NC, 0, 76, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Asignatura_NC, 0, 83, Short.MAX_VALUE)
+                    .addComponent(Buscar_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Facultades_NC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Asignatura_NC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,8 +202,7 @@ public class inicio_estudiante extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //crea un botón de salir.
-        JOptionPane.showMessageDialog(null,"Hasta luego"); 
-        System.exit(WIDTH);
+        this.Salir(evt);        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPanel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyReleased
@@ -199,10 +220,17 @@ public class inicio_estudiante extends javax.swing.JFrame {
             case 0:
                 //mensaje imagen se refiere a una variable que definirá que se imprimirá en cada caso
                 mensaje_imagen1 = "Universidad Nacional Sede Bogotá";
+                
+                Mostrar_imagen.setIcon(new ImageIcon(inicio_estudiante.class.getResource("com.thenarrowcompasscompany.narrow.compassv2.imagenes/logo_azul")));
+                Mostrar_imagen.setVisible(true);
+                //this.add(Mostrar_imagen);
                 break;
             case 1:
                 mensaje_imagen1 = "Imagen zona 1 de la universidad";
+                //BufferedImage imagenfondo = cargarImagen(1,1);
+                
                 break;
+
             case 2:
                 mensaje_imagen1 = "Imagen zona 2 de la universidad";
                 break;
@@ -286,6 +314,7 @@ public class inicio_estudiante extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Asignatura_NC;
     private javax.swing.JButton Buscar_imagen;
     private javax.swing.JComboBox<String> Facultades_NC;
+    private javax.swing.JLabel Imagen1;
     private javax.swing.JLabel Mostrar_asignatura;
     private javax.swing.JLabel Mostrar_imagen;
     private javax.swing.JButton jButton1;
@@ -294,4 +323,34 @@ public class inicio_estudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Escribir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void LEER() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Consultar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Borrar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void conectar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void desconectar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
