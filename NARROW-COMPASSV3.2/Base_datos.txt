@@ -1,0 +1,10 @@
+DROP DATABASE if EXISTS RegistroUsuarios ;
+Create database RegistroUsuarios;
+Use RegistroUsuarios;
+create table REGUSER (id int not null AUTO_INCREMENT PRIMARY KEY, documento int(10) not null, nombre varchar(60) not null, usuario varchar(50) not null, contrasenia varchar(50) not null,TipoUsuario varchar(50) not null);
+create table REGEST (id int not null AUTO_INCREMENT PRIMARY KEY, documento int(10) not null, nombre_e varchar(60) not null, usuario_e varchar(50) not null, contrasenia_e varchar(50) not null,TipoUsuario_e varchar(50) not null);
+create table REGADM (id int not null AUTO_INCREMENT PRIMARY KEY, documento int(10) not null, nombre_a varchar(60) not null, usuario_a varchar(50) not null, contrasenia_a varchar(50) not null,TipoUsuario_a varchar(50) not null);
+create table REGDOC (id int not null AUTO_INCREMENT PRIMARY KEY, documento int(10) not null, nombre_d varchar(60) not null, usuario_d varchar(50) not null, contrasenia_d varchar(50) not null,TipoUsuario_d varchar(50) not null);
+
+
+insert into reguser(documento, nombre, usuario, contrasenia, tipousuario) values (1234567890, "Diego", "DiegoUser", "12345", "Admin");
