@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package Modelo;
+import Interfaces.IBD_CRUD;
 import java.sql.*;
 /**
  *
  * @author dinan
  */
-public class ConsultasRegistroUsuarios extends Conexion{
+public class ConsultasRegistroUsuarios extends Conexion implements IBD_CRUD{
     
+    @Override
     public boolean Registrar(RegistroUsuarios RUNC){
         
         
@@ -46,7 +48,7 @@ public class ConsultasRegistroUsuarios extends Conexion{
             
         }
     }
-    
+    @Override
     public boolean Modificar(RegistroUsuarios RUNC){
         
         
@@ -83,7 +85,7 @@ public class ConsultasRegistroUsuarios extends Conexion{
             
         }
     }
-    
+    @Override
     public boolean Eliminar(RegistroUsuarios RUNC){
         
         PreparedStatement ps = null;
@@ -115,7 +117,7 @@ public class ConsultasRegistroUsuarios extends Conexion{
         }
     
     }
-    
+    @Override
     public boolean Buscar(RegistroUsuarios RUNC){
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -157,4 +159,58 @@ public class ConsultasRegistroUsuarios extends Conexion{
             
         }
     }
+    
+    @Override
+    //prototipo, en caso e fallo quitar
+    public boolean Loguin(RegistroUsuarios RUNC){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = getConexion();
+                                
+        String consultaSQL = "select id, documento, nombre, usuario, contrasenia, TipoUsuario from  REGUSER where usuario=? ";
+        
+        try{
+            //establece la consulta usuario 
+            ps = con.prepareStatement(consultaSQL);                       
+            ps.setString(1, RUNC.getUsuario());
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                //valida si lacontraseña del usuario es correcto 
+                //siempre retornará falso a menos que las contraseñas coinciadan y los usuarios
+                if(RUNC.getContrasenia().equals(rs.getString(5)) && RUNC.getTipoUsuario().equals(rs.getString(6))){
+                    
+                    RUNC.setId(rs.getInt(1));
+                    RUNC.setNombre(rs.getString(3));
+                    RUNC.setTipoUsuario(rs.getString(6));
+                    
+                    return true;
+                    
+                }
+                else{
+                    return false;
+                }              
+                
+            }
+            return false;
+                        
+        }
+        catch(SQLException e){
+            //System.err.println("e");
+            //para ver si hay error en caso de que no imprime e
+            System.out.println("Error al conectar: "+ e);
+            return false;
+        }
+        finally{
+            try{
+                con.close();
+            }
+            catch(SQLException e){
+               // System.err.println("e");
+                System.out.println("Error al conectar: "+ e);
+            }
+            
+        }
+    }
+    
 }

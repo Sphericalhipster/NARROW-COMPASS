@@ -5,18 +5,20 @@
  */
 package Modelo;
 import java.sql.*;
+import Interfaces.IConexion_BD;
 /**
  *
  * @author dinan
  */
-public class Conexion {
-    private final String base = "RegistroUsuarios";
+public class Conexion implements IConexion_BD{
+    /*private final String base = "RegistroUsuarios";
     private final String user = "root";
     private final String password = "";
-    private final String url = "jdbc:mysql://localhost/" + base;
+    private final String url = "jdbc:mysql://localhost/" + base;*/
     private Connection con = null;
     
-    public Connection getConexion(){
+    @Override
+    public Connection getConexion() {
         
         try{
             //ruta del controlador mysql
