@@ -37,7 +37,7 @@ public class CtrlControlador implements ActionListener{
    
     //inicair vista
     public void iniciar(){
-            frm.setTitle("RegistroUsuarios");
+            frm.setTitle("Registro Usuarios");
             frm.setLocationRelativeTo(null);
             frm.txtId.setVisible(false);
     }

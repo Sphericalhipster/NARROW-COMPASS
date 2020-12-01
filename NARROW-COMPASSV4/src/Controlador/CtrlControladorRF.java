@@ -39,7 +39,7 @@ public class CtrlControladorRF implements ActionListener{
    
     //iniciar vista
     public void iniciar(){
-            frmRF.setTitle("RegistroFacultad");
+            frmRF.setTitle("Registro Facultad");
             frmRF.setLocationRelativeTo(null);
             frmRF.txtIdRF.setVisible(false);
     }

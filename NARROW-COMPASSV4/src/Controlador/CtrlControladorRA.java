@@ -39,7 +39,7 @@ public class CtrlControladorRA implements ActionListener{
    
     //iniciar vista
     public void iniciar(){
-            frmRA.setTitle("RegistroFacultad");
+            frmRA.setTitle("Registro Asignaturas");
             frmRA.setLocationRelativeTo(null);
             frmRA.txtIdRA.setVisible(false);
     }
@@ -108,8 +108,8 @@ public class CtrlControladorRA implements ActionListener{
         
         // boton buscar
         if(e.getSource() == frmRA.btnBuscarRA){
-            
-            modRA.setNombre(frmRA.txtNombreRA.getText());  
+            //CAMBIO SET NOMBRE POR SET ACRONIMO
+            modRA.setAcronimo(frmRA.txtAcronimoRA.getText());  
               
             if(modCRA.Buscar(modRA)){
                 
