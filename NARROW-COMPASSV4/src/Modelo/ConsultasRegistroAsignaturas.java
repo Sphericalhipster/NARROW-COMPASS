@@ -121,12 +121,12 @@ public class ConsultasRegistroAsignaturas extends Conexion implements IBD_CRUDRA
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-                                
-        String consultaSQL = "select * from  REGASIGNATURA where nombre=? ";
+        //reparacion consulta por acrónimo                        
+        String consultaSQL = "select * from  REGASIGNATURA where acronimo=? ";
         
         try{
             ps = con.prepareStatement(consultaSQL);                       
-            ps.setString(1, RANC.getNombre());
+            ps.setString(1, RANC.getAcronimo());
             rs = ps.executeQuery();
             
             if(rs.next()){
