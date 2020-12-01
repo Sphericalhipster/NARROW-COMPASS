@@ -18,6 +18,8 @@ import Controlador.GUINC;
  */
 public class inicio_estudianteNC extends GUINC {
 
+    String tipouser;
+    
     /**
      * Creates new form inicio_estudianteNC
      */
@@ -89,7 +91,13 @@ public class inicio_estudianteNC extends GUINC {
         Facultades_NC = new javax.swing.JComboBox<>();
         Asignatura_NC = new javax.swing.JComboBox<>();
         Buscar_imagen = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSalirIE = new javax.swing.JButton();
+        txtFacultadIE = new javax.swing.JTextField();
+        txtAsignaturaIE = new javax.swing.JTextField();
+        txtIdRF = new javax.swing.JTextField();
+        txtIdRA = new javax.swing.JTextField();
+        txtGrupoRA = new javax.swing.JTextField();
+        btnVolverIE = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,12 +110,12 @@ public class inicio_estudianteNC extends GUINC {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Mostrar_imagen.setText("jLabel1");
-        jPanel2.add(Mostrar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 118));
+        jPanel2.add(Mostrar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 200));
 
         Mostrar_asignatura.setText("Asignatura");
-        jPanel2.add(Mostrar_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 125, 226, 30));
+        jPanel2.add(Mostrar_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 390, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 12, 220, 160));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 12, 390, 230));
 
         Facultades_NC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Facultad" }));
         Facultades_NC.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +123,7 @@ public class inicio_estudianteNC extends GUINC {
                 Facultades_NCActionPerformed(evt);
             }
         });
-        jPanel1.add(Facultades_NC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 94, -1));
+        jPanel1.add(Facultades_NC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 170, -1));
 
         Asignatura_NC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Asignatura" }));
         Asignatura_NC.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +131,7 @@ public class inicio_estudianteNC extends GUINC {
                 Asignatura_NCActionPerformed(evt);
             }
         });
-        jPanel1.add(Asignatura_NC, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 94, -1));
+        jPanel1.add(Asignatura_NC, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 170, -1));
 
         Buscar_imagen.setText("Buscar");
         Buscar_imagen.addActionListener(new java.awt.event.ActionListener() {
@@ -131,26 +139,43 @@ public class inicio_estudianteNC extends GUINC {
                 Buscar_imagenActionPerformed(evt);
             }
         });
-        jPanel1.add(Buscar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 94, -1));
+        jPanel1.add(Buscar_imagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 94, -1));
 
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalirIE.setText("Salir");
+        btnSalirIE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSalirIEActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 94, -1));
-        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 320));
+        jPanel1.add(btnSalirIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 360, 94, -1));
+        jPanel1.add(txtFacultadIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 170, -1));
+        jPanel1.add(txtAsignaturaIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 170, -1));
+        jPanel1.add(txtIdRF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 120, -1));
+        jPanel1.add(txtIdRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 120, -1));
+        jPanel1.add(txtGrupoRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 110, -1));
+
+        btnVolverIE.setText("Volver");
+        btnVolverIE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverIEActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolverIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 94, -1));
+        jPanel1.add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,15 +189,15 @@ public class inicio_estudianteNC extends GUINC {
         // TODO add your handling code here:
     }//GEN-LAST:event_Facultades_NCActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSalirIEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirIEActionPerformed
         //crea un botón de salir.
         /*JOptionPane.showMessageDialog(null,"Hasta luego"); 
         System.exit(WIDTH);*/
         this.Salir(evt); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSalirIEActionPerformed
 
     private void Buscar_imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_imagenActionPerformed
-        //switch case que llamará la imagen
+        /*//switch case que llamará la imagen
         String mensaje_imagen1 = null;
         String mensaje_asignatura = null;
         int id_asignatura = 0;
@@ -236,8 +261,37 @@ public class inicio_estudianteNC extends GUINC {
         Mostrar_imagen.setHorizontalAlignment(0);        
         Mostrar_asignatura.setText("" + mensaje_asignatura + id_asignatura);
         
-      
+      */
     }//GEN-LAST:event_Buscar_imagenActionPerformed
+
+    private void btnVolverIEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverIEActionPerformed
+        switch(tipouser){
+            
+            case "admin":
+                /*envíar al siguiente frame*/
+                frmVentanaAdmin pantallaAdmin = new frmVentanaAdmin();
+                //si es correcto la pantalla será visible
+                pantallaAdmin.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                break;
+                
+            case "docente":
+                /*envíar al siguiente frame*/
+                frmVentanaDocente pantallaDocente = new frmVentanaDocente();
+                //si es correcto la pantalla será visible
+                pantallaDocente.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                
+                break;
+                
+            case "Estudiante":
+                JOptionPane.showMessageDialog(null,"Upss... No puedes regresar más");
+                break;
+                
+        }
+    }//GEN-LAST:event_btnVolverIEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,14 +332,20 @@ public class inicio_estudianteNC extends GUINC {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Asignatura_NC;
-    private javax.swing.JButton Buscar_imagen;
-    private javax.swing.JComboBox<String> Facultades_NC;
-    private javax.swing.JLabel Mostrar_asignatura;
-    private javax.swing.JLabel Mostrar_imagen;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JComboBox<String> Asignatura_NC;
+    public javax.swing.JButton Buscar_imagen;
+    public javax.swing.JComboBox<String> Facultades_NC;
+    public javax.swing.JLabel Mostrar_asignatura;
+    public javax.swing.JLabel Mostrar_imagen;
+    public javax.swing.JButton btnSalirIE;
+    public javax.swing.JButton btnVolverIE;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblfondo;
+    public javax.swing.JTextField txtAsignaturaIE;
+    public javax.swing.JTextField txtFacultadIE;
+    public javax.swing.JTextField txtGrupoRA;
+    public javax.swing.JTextField txtIdRA;
+    public javax.swing.JTextField txtIdRF;
     // End of variables declaration//GEN-END:variables
 }

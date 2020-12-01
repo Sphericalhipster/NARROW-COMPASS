@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class frmRegistroAsignaturas extends GUINC {
     
+    String tipouser;
     @Override
     public void Salir(java.awt.event.ActionEvent evt){
         
@@ -110,6 +111,11 @@ public class frmRegistroAsignaturas extends GUINC {
         getContentPane().add(btnEliminarRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 80, -1));
 
         btnVolverRA.setText("Volver");
+        btnVolverRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverRAActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVolverRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 80, -1));
 
         btnGuardarRA.setText("Guardar");
@@ -142,6 +148,30 @@ public class frmRegistroAsignaturas extends GUINC {
         //botón salir
         this.Salir(evt);
     }//GEN-LAST:event_btnSalirRAActionPerformed
+
+    private void btnVolverRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverRAActionPerformed
+        switch(tipouser){
+            
+            case "admin":
+                /*envíar al siguiente frame*/
+                frmVentanaAdmin pantallaAdmin = new frmVentanaAdmin();
+                //si es correcto la pantalla será visible
+                pantallaAdmin.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                break;
+                
+            case "docente":
+                /*envíar al siguiente frame*/
+                frmVentanaDocente pantallaDocente = new frmVentanaDocente();
+                //si es correcto la pantalla será visible
+                pantallaDocente.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                
+                break;
+        }
+    }//GEN-LAST:event_btnVolverRAActionPerformed
 
     /**
      * @param args the command line arguments

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author dinan
  */
 public class frmRegistroFacultad extends GUINC {
-
+    String tipouser;
     /**
      * Creates new form frmRegistroFacultad
      */
@@ -92,6 +92,11 @@ public class frmRegistroFacultad extends GUINC {
         getContentPane().add(BtnSalirRF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 80, -1));
 
         btnVolverRF.setText("Volver");
+        btnVolverRF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverRFActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVolverRF, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 80, -1));
 
         pack();
@@ -101,6 +106,30 @@ public class frmRegistroFacultad extends GUINC {
         // botón de salir
         this.Salir(evt);
     }//GEN-LAST:event_BtnSalirRFActionPerformed
+
+    private void btnVolverRFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverRFActionPerformed
+        switch(tipouser){
+            
+            case "admin":
+                /*envíar al siguiente frame*/
+                frmVentanaAdmin pantallaAdmin = new frmVentanaAdmin();
+                //si es correcto la pantalla será visible
+                pantallaAdmin.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                break;
+                
+            case "docente":
+                /*envíar al siguiente frame*/
+                frmVentanaDocente pantallaDocente = new frmVentanaDocente();
+                //si es correcto la pantalla será visible
+                pantallaDocente.setVisible(true);
+                //cambiar de frame loguin a inicio_superadmin
+                this.dispose();
+                
+                break;
+        }
+    }//GEN-LAST:event_btnVolverRFActionPerformed
 
     /**
      * @param args the command line arguments

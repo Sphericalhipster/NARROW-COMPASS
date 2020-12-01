@@ -6,8 +6,12 @@
 package Vista;
 
 import Controlador.CtrlControlador;
+import Controlador.CtrlControladorIE;
 import Controlador.GUINC;
+import Modelo.ConsultasEstudiantes;
 import Modelo.ConsultasRegistroUsuarios;
+import Modelo.RegistroAsignaturas;
+import Modelo.RegistroFacultad;
 import Modelo.RegistroUsuarios;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -192,9 +196,9 @@ public class frmLoguinNC extends GUINC {
                     if(modeloLSQL.Loguin(modelo)){
                          JOptionPane.showMessageDialog(null,"Bienvenido SuperAdministrador");
                                 /*envíar al siguiente frame*/
-                                inicio_estudianteNC pantallaIE = new inicio_estudianteNC();
+                                frmVentanaAdmin pantallaVA = new frmVentanaAdmin();
                                 //si es correcto la pantalla será visible
-                                pantallaIE.setVisible(true);
+                                pantallaVA.setVisible(true);
                                 //cambiar de frame loguin a inicio_superadmin
                                 this.dispose();
                     }
@@ -207,18 +211,28 @@ public class frmLoguinNC extends GUINC {
                     
                     modelo.setTipoUsuario(TipoUsuarioValidacion);
                     if(modeloLSQL.Loguin(modelo)){
-                         JOptionPane.showMessageDialog(null,"Bienvenido Administrador");
+                        
+                        JOptionPane.showMessageDialog(null,"Bienvenido Administrador");
                          
-                        //si lo queremos llamar en el loguin ingresamos estos parámetros en el swich case
-                        //creamos los objetos
+                        /*envíar al siguiente frame*/
+                        frmVentanaAdmin pantallaVA = new frmVentanaAdmin();
+                        //si es correcto la pantalla será visible
+                        pantallaVA.setVisible(true);
+                        //cambiar de frame loguin a inicio_superadmin
+                        this.dispose(); 
+                         
+                         
+                        //no borrar por seguridad 
+                        /*si lo queremos llamar en el loguin ingresamos estos parámetros en el swich case
+                        creamos los objetos
                         RegistroUsuarios mod = new RegistroUsuarios();
                         ConsultasRegistroUsuarios modC = new ConsultasRegistroUsuarios();
                         frmRegistroUsuarios frm = new frmRegistroUsuarios();
 
-                        // llamamos el constructor que me va a recibir el modelo mod, las consultas modC y la vista frm
+                        llamamos el constructor que me va a recibir el modelo mod, las consultas modC y la vista frm
                         CtrlControlador ctrl = new CtrlControlador(mod, modC, frm);
                         ctrl.iniciar();
-                        frm.setVisible(true);
+                        frm.setVisible(true);*/
                     }
                     else{
                         JOptionPane.showMessageDialog(null, ErrorLoguin);
@@ -231,18 +245,14 @@ public class frmLoguinNC extends GUINC {
                     
                     modelo.setTipoUsuario(TipoUsuarioValidacion);
                     if(modeloLSQL.Loguin(modelo)){
-                         JOptionPane.showMessageDialog(null,"Bienvenido Docente");
+                        JOptionPane.showMessageDialog(null,"Bienvenido Docente");
                          
-                        //si lo queremos llamar en el loguin ingresamos estos parámetros en el swich case
-                        //creamos los objetos
-                        RegistroUsuarios mod = new RegistroUsuarios();
-                        ConsultasRegistroUsuarios modC = new ConsultasRegistroUsuarios();
-                        frmRegistroUsuarios frm = new frmRegistroUsuarios();
-
-                        // llamamos el constructor que me va a recibir el modelo mod, las consultas modC y la vista frm
-                        CtrlControlador ctrl = new CtrlControlador(mod, modC, frm);
-                        ctrl.iniciar();
-                        frm.setVisible(true);
+                        /*envíar al siguiente frame*/
+                        frmVentanaDocente pantallaVD = new frmVentanaDocente();
+                        //si es correcto la pantalla será visible
+                        pantallaVD.setVisible(true);
+                        //cambiar de frame loguin a inicio_superadmin
+                        this.dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(null, ErrorLoguin);
@@ -255,13 +265,21 @@ public class frmLoguinNC extends GUINC {
                     
                     modelo.setTipoUsuario(TipoUsuarioValidacion);
                     if(modeloLSQL.Loguin(modelo)){
-                         JOptionPane.showMessageDialog(null,"Bienvenido Estudiante");
-                                /*envíar al siguiente frame*/
-                                inicio_estudianteNC pantallaIE = new inicio_estudianteNC();
-                                //si es correcto la pantalla será visible
-                                pantallaIE.setVisible(true);
-                                //cambiar de frame loguin a inicio_superadmin
-                                this.dispose();
+                        JOptionPane.showMessageDialog(null,"Bienvenido Estudiante");
+                        //si lo queremos llamar en el loguin ingresamos estos parámetros en el swich case
+                        //creamos los objetos
+                        RegistroAsignaturas modRA = new RegistroAsignaturas();
+                        RegistroFacultad modRF = new RegistroFacultad();
+                        ConsultasEstudiantes modCCE = new ConsultasEstudiantes();
+                        inicio_estudianteNC frmIE = new inicio_estudianteNC();
+
+                        // llamamos el constructor que me va a recibir el modelo mod, las consultas modC y la vista frm
+                        CtrlControladorIE ctrl = new CtrlControladorIE(modRA, modRF, modCCE, frmIE);
+                        ctrl.iniciar();
+                        frmIE.setVisible(true);
+                        frmIE.tipouser = "Estudiante";
+                        this.dispose();
+                        
                     }
                     else{
                         JOptionPane.showMessageDialog(null, ErrorLoguin);
